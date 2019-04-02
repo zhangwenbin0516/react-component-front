@@ -45,3 +45,23 @@
         componentWillUnmount()                      组件将要卸载时调用，一些事件监听和定时器需要在此时清除
  
  * Redux介绍
+ 
+        redux主要有store、reducer、action组成
+        
+        1. store是一个对象，主要由四个函数组成
+        
+        1> dispatch
+        用于action的分发，在createStore中可以用middleware中间件对dispatch进行改造
+        
+        2> subscribe
+        监听state的变化,函数在store调用dispatch时会注册一个listener监听state变化，当我们需要知道state是否变化时可以调用
+        
+        3> getState
+        获取store中的state,getState主要在两个地方需要用到，一是在dispatch拿到action后store需要用它来获取state里的数据，并把这个数据传给reducer，这个过程是自动执行的，二是在我们利用subscribe监听到state发生变化后调用它来获取新的state数据
+        
+        4> replaceReducer
+        替换reducer，改变state修改的逻辑
+        
+        2. action是一个对象，其中type属性是必须的，同时可以传入一些数据,action可以用actionCreactor进行创造,dispatch就是把action对象发送出去
+        
+        3. reducer是一个函数，它接受一个state和一个action，根据action的type返回一个新的state。根据业务逻辑可以分为很多个reducer，然后通过combineReducers将它们合并，state树中有很多对象，每个state对象对应一个reducer，state对象的名字可以在合并时定义

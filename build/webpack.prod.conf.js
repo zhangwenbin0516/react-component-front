@@ -17,6 +17,9 @@ module.exports = WebpackMerge(WebpackBaseConf, {
         filename: config.build.assetsPath + "js/[name].[Hash:5].js",
         publicPath: config.build.publicPath
     },
+    devServer: {
+      historyApiFallback: true
+    },
     module: {
         rules: [
             {

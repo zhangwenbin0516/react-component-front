@@ -7,7 +7,7 @@ module.exports = {
         assetsBuild: 'dist' //压缩生产文件存储
     },
     build: {
-        publicPath: './',
+        publicPath: '/',
         assetsPath: 'public/',
         assetsBuild: 'dist'
     }

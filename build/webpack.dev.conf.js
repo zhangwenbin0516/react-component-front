@@ -16,7 +16,8 @@ module.exports = WebpackMerge(WebpackBaseConf, {
         contentBase: path.join(__dirname, '..', config.dev.assetsBuild),
         inline: true,
         host: 'localhost',
-        port: '3500'
+        port: '3500',
+        historyApiFallback: true
     },
     output: {
         path: path.join(__dirname, '..', config.dev.assetsBuild),

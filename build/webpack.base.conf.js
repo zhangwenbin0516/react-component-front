@@ -6,7 +6,7 @@ const config = require('../config');
 
 module.exports = {
     entry: {
-        app: path.join(__dirname, '..', 'src/app.js'),
+        app: path.join(__dirname, '..', 'src/app.jsx'),
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
@@ -26,14 +26,20 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-env']
+                        presets: [
+                            ['@babel/preset-env', {
+                                targets: {
+                                    browsers: ['> 1%', 'last 2 versions']
+                                }
+                            }]
+                        ]
                     }
                 },
-                exclude: /(node_modules|bower_components)/
+                exclude: /node_modules/
             },
             {
                 test: /\.(htm|html)$/,
-                use: ['html-withimg-loader']
+                use: ['html-loader']
             },
             {
                 test: /\.(csv|tsv)$/,

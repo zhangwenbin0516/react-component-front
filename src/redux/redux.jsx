@@ -1,3 +1,4 @@
-import {createStore} from "redux";
-
-const store = createStore(reducer);
+export default {
+    id: 1,
+    name: 'ss'
+}
