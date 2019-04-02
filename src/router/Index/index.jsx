@@ -1,40 +1,36 @@
 import React, {Component} from 'react'
 import {HashRouter as Router, Route, Switch, Link} from "react-router-dom";
 
-import config from './config'
+import Configs from './config'
 
-class Routes extends React.Component{
-    constructor() {
-        super();
-    }
-    static RouteList = [
-        {
-            id: 0,
-            path: '/',
-            name: '首页'
-        },
-        {
-            id: 1,
-            path: '/',
-            name: '主页'
-        }
-    ]
+
+class RoutesComponent extends Component{
+
     render() {
         return(
             <div className={'home'}>
-                <header>
-                    <nav>
-                        {
-                            Routes.RouteList.map((key) => {
-                                <Link to={key.path}>{key.name}</Link>
-                            })
-                        }
-                    </nav>
-                </header>
-                <Router>
-
+                <Router basename="/">
+                    <header>
+                        <nav>
+                            <Link to={''}>asdasdas</Link>
+                            <Link to={'home'}>asdasd111as</Link>
+                            {/*{
+                                RouteLists.map(({path, name}, index) => {
+                                    <Link to={path} key={index}>{name}</Link>
+                                })
+                            }*/}
+                        </nav>
+                    </header>
+                    <section>
+                        <Switch>
+                            {
+                                Configs.map(({path, component, exact}, index) => {
+                                    <Route path={path} getComponent={component} exact={exact}  key={index}></Route>
+                                })
+                            }
+                        </Switch>
+                    </section>
                 </Router>
-
             </div>
         )
     }
@@ -42,4 +38,4 @@ class Routes extends React.Component{
 
 }
 
-export default Routes
+export default RoutesComponent

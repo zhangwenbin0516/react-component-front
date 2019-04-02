@@ -1,15 +1,15 @@
-import Pages from 'page/home'
-import home from 'page/home/home'
-const config = [
+const RouteLists = [
     {
-        path: '/',
+        path: '',
+        name: '首页',
         exact: true,
-        component: Pages
+        component: require('page/home').default
     },
     {
-        path: '/home',
-        component: home
+        path: 'home',
+        name: '主页',
+        component: require('page/home/home').default
     }
 ]
 
-export default config
+export default RouteLists
