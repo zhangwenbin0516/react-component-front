@@ -3,6 +3,7 @@
 const path = require('path');
 const WebpackBaseConf = require('./webpack.base.conf');
 const config = require('../config');
+const utils = require('./utils');
 const WebpackMerge = require('webpack-merge');
 const CleanPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -88,7 +89,8 @@ module.exports = WebpackMerge(WebpackBaseConf, {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '..', 'index.html'),
             filename: "index.html",
-            publicPath: config.dev.publicPath
+            publicPath: config.dev.publicPath,
+            favicon: utils.favicon
         }),
         new MiniCssExtractPlugin({
             filename: config.build.assetsPath + 'css/[name].css',
