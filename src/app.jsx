@@ -1,9 +1,9 @@
 import 'babel-polyfill'
-import React, {Component} from 'react'
-import ReactDom, {render} from 'react-dom'
+import React from 'react'
+import ReactDom from 'react-dom'
 import {Provider, connect} from 'react-redux'
 
-import Pages from 'page/'
+import Pages from 'src/router/main'
 import ReduxReady from 'src/redux/redux'
 import 'assets/sass/pages.scss'
 
@@ -11,7 +11,7 @@ class App extends React.Component{
     render() {
         return(
             //<Provider store={ReduxReady}>
-                <Pages/>
+                <Pages />
             //</Provider>
         )
     }
