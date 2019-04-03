@@ -1,16 +1,12 @@
 "use strict";
 
 const path = require('path');
+const utils = require('./utils');
 const WebpackBaseConf = require('./webpack.base.conf');
 const config = require('../config');
-const utils = require('./utils');
-const WebpackMerge = require('webpack-merge');
-const CleanPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = WebpackMerge(WebpackBaseConf, {
+module.exports = utils.merge(WebpackBaseConf, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
@@ -79,20 +75,20 @@ module.exports = WebpackMerge(WebpackBaseConf, {
         ]
     },
     plugins: [
-        new CleanPlugin({
+        new utils.clean({
             root: path.join(__dirname, '..', config.dev.assetsBuild)
         }),
         new Webpack.NamedModulesPlugin(),
         new Webpack.HotModuleReplacementPlugin({
             multiple: true
         }),
-        new HtmlWebpackPlugin({
+        new utils.render({
             template: path.join(__dirname, '..', 'index.html'),
             filename: "index.html",
             publicPath: config.dev.publicPath,
             favicon: utils.favicon
         }),
-        new MiniCssExtractPlugin({
+        new utils.miniCss({
             filename: config.build.assetsPath + 'css/[name].css',
             chunkFilename: '[id].css'
         }),

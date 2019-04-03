@@ -1,17 +1,12 @@
 "use strict";
 
 const path = require('path');
-const WebpackMerge = require('webpack-merge');
-const WebpackBaseConf = require('./webpack.base.conf');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const config = require('../config');
 const utils = require('./utils');
-const CleanPlugin = require('clean-webpack-plugin');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackBaseConf = require('./webpack.base.conf');
+const config = require('../config');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-module.exports = WebpackMerge(WebpackBaseConf, {
+module.exports = utils.merge(WebpackBaseConf, {
     mode: 'production',
     output: {
         path: path.join(__dirname, '..', config.build.assetsBuild),
@@ -28,7 +23,7 @@ module.exports = WebpackMerge(WebpackBaseConf, {
                 include: /src/,
                 use: [
                     {
-                        loader: MiniCssExtractPlugin.loader
+                        loader: utils.miniCss.loader
                     },
                     {
                         loader: 'css-loader'
@@ -75,16 +70,16 @@ module.exports = WebpackMerge(WebpackBaseConf, {
         ]
     },
     plugins: [
-        new CleanPlugin({
+        new utils.clean({
             root: path.join(__dirname, '..', config.build.assetsBuild)
         }),
-        new HtmlWebpackPlugin({
+        new utils.render({
             template: path.join(__dirname, '..', 'index.html'),
             filename: "index.html",
             publicPath: config.build.publicPath,
             favicon: utils.favicon
         }),
-        new MiniCssExtractPlugin({
+        new utils.miniCss({
             filename: config.build.assetsPath + 'css/[name].[Hash:6].css',
             chunkFilename: '[id].[hash].css'
         }),
