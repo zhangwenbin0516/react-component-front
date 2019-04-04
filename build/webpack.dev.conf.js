@@ -14,7 +14,15 @@ module.exports = utils.merge(WebpackBaseConf, {
         inline: true,
         host: 'localhost',
         port: '3500',
-        historyApiFallback: true
+        historyApiFallback: true,
+        progress: true,
+        proxy: {
+            '/api/': {
+                target: 'https://apiDemo.zbgedu.com',
+                changeOrigin: true,
+                secure: false
+            }
+        }
     },
     output: {
         path: path.join(__dirname, '..', config.dev.assetsBuild),
