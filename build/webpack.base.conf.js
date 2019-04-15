@@ -18,6 +18,9 @@ module.exports = {
             'ui': path.resolve(__dirname, '..', 'src/UI')
         }
     },
+    externals: {
+       'Aliplayer': 'aliplayer-min'
+    },
     module: {
         rules: [
             {

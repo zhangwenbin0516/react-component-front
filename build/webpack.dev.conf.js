@@ -12,7 +12,7 @@ module.exports = utils.merge(WebpackBaseConf, {
     devServer: {
         contentBase: path.join(__dirname, '..', config.dev.assetsBuild),
         inline: true,
-        host: 'localhost',
+        host: 'exvideo.zbgedu.com',
         port: '3500',
         historyApiFallback: true,
         progress: true,
@@ -21,6 +21,14 @@ module.exports = utils.merge(WebpackBaseConf, {
                 target: 'https://apiDemo.zbgedu.com',
                 changeOrigin: true,
                 secure: false
+            },
+            '/video/': {
+                target: 'https://exvideo.zbgedu.com',
+                changeOrigin: true,
+                secure: false,
+                pathRewrite: {
+                    '^/video/': '/'
+                }
             }
         }
     },

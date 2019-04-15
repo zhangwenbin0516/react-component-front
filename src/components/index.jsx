@@ -18,8 +18,8 @@ class Pages extends React.Component{
             type: 'post',
             url: '/api/userAction/php/oss/GetVideoPlayAuth',
             data: {
-                videoId: 'd5df9cb979ff4ff2871d5c2d53b68899',
-                token: Pages.userInfo.token
+                videoId: 'b713d9cddb0f4faba50d073788409392',
+                //token: Pages.userInfo.token
             },
             success: (res) => {
                 self.setState({
@@ -38,9 +38,12 @@ class Pages extends React.Component{
             id: 'J_prismPlayer',
             width: '100%',
             autoplay: true,
-            vid : `${this.state.playData.VideoId}`,
-            playauth : `${this.state.playData.PlayAuth}`,
-            cover: this.state.playData.CoverURL,
+            useFlashPrism: true,
+            useH5Prism: false,
+            source : 'https://outin-53795a3a583a11e9b00500163e1c91c8.oss-cn-shanghai.aliyuncs.com/586aa50b8e6f46e89344c364acb57293/9b575775cf4a4133a84f537d2cb9fe0b-6f1b5a73f814e82f6caecad5cbbde505-ld.mp4?Expires=1555329410&OSSAccessKeyId=LTAItL9Co9nUDU5r&Signature=wsqT5wHN5GiTbSOxDZ4Da0uBKok%3D',
+            //vid : `${this.state.playData.VideoId}`,
+            //playauth : `${this.state.playData.PlayAuth}`,
+            //cover: this.state.playData.CoverURL,
         })
     }
     getData(lists) {
@@ -80,8 +83,6 @@ class Pages extends React.Component{
     render() {
         return(
             <div className={'homepage'}>
-                <link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.8.1/skins/default/aliplayer-min.css" />
-                <script type="text/javascript" src="https://g.alicdn.com/de/prismplayer/2.8.1/aliplayer-min.js"></script>
                 <div className="prism-player" id="J_prismPlayer" style={{width: '600px', height: '400px',background: 'red'}}></div>
             </div>
         )

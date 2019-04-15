@@ -10,7 +10,7 @@ import 'assets/sass/pages.scss'
 class App extends React.Component{
     render() {
         return(
-            //<Provider store={ReduxReady}>
+            //<Provider store={ReduxReady} store={ReduxReady}>
                 <Pages />
             //</Provider>
         )
