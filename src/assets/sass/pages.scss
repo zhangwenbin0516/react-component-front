@@ -1,1 +1,14 @@
 @import "reset";
+.homepage {
+  & > div {
+    width: 80px;
+    height: 30px;
+  }
+  & > ul {
+    width: 60px;
+    li {
+      line-height: 24px;
+      cursor: pointer;
+    }
+  }
+}
