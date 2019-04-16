@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from 'ui/header'
-import Section from './Index/'
+import AsideNav from 'ui/home/left'
+import SectionContent from 'ui/home/right'
 
 class Pages extends React.Component {
     constructor() {
@@ -12,9 +13,10 @@ class Pages extends React.Component {
         return (
             <div className={'pages-master'}>
                 <Header />
-                <section className={'pages-section'}>
-
-                </section>
+                <article className={'pages-section'}>
+                    <AsideNav />
+                    <SectionContent/>
+                </article>
             </div>
         )
     }

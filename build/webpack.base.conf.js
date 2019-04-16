@@ -1,21 +1,20 @@
 "use strict";
 
-const path = require('path');
-const config = require('../config');
+const utils = require('./utils');
 
 
 module.exports = {
     entry: {
-        app: path.join(__dirname, '..', 'src/app.jsx'),
+        app: utils.path.join(__dirname, '..', 'src/app.jsx'),
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.css', '.scss'],
         alias: {
-            'src': path.resolve(__dirname, '..', 'src'),
-            'assets': path.resolve(__dirname, '..', 'src/assets'),
-            'page': path.resolve(__dirname, '..', 'src/components'),
-            'themes': path.resolve(__dirname, '..', 'src/themes'),
-            'ui': path.resolve(__dirname, '..', 'src/UI')
+            'src': utils.path.resolve(__dirname, '..', 'src'),
+            'assets': utils.path.resolve(__dirname, '..', 'src/assets'),
+            'page': utils.path.resolve(__dirname, '..', 'src/components'),
+            'themes': utils.path.resolve(__dirname, '..', 'src/themes'),
+            'ui': utils.path.resolve(__dirname, '..', 'src/UI')
         }
     },
     externals: {

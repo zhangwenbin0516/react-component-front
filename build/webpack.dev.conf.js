@@ -1,18 +1,16 @@
 "use strict";
 
-const path = require('path');
 const utils = require('./utils');
 const WebpackBaseConf = require('./webpack.base.conf');
-const config = require('../config');
 const Webpack = require('webpack');
 
 module.exports = utils.merge(WebpackBaseConf, {
     mode: 'development',
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: path.join(__dirname, '..', config.dev.assetsBuild),
+        contentBase: utils.path.join(__dirname, '..', utils.dev.assetsBuild),
         inline: true,
-        host: 'exvideo.zbgedu.com',
+        host: 'localhost',
         port: '3500',
         historyApiFallback: true,
         progress: true,
@@ -33,9 +31,9 @@ module.exports = utils.merge(WebpackBaseConf, {
         }
     },
     output: {
-        path: path.join(__dirname, '..', config.dev.assetsBuild),
-        filename: config.dev.assetsPath + "js/[name].js",
-        publicPath: config.dev.publicPath
+        path: utils.path.join(__dirname, '..', utils.dev.assetsBuild),
+        filename: utils.dev.assetsPath + "js/[name].js",
+        publicPath: utils.dev.publicPath
     },
     module: {
         rules: [
@@ -71,7 +69,7 @@ module.exports = utils.merge(WebpackBaseConf, {
                         options: {
                             name: '[name].[ext]',
                             limit: 8192,
-                            outputPath: config.dev.assetsPath + 'images/'
+                            outputPath: utils.dev.assetsPath + 'images/'
                         }
                     }
                 ]
@@ -83,7 +81,7 @@ module.exports = utils.merge(WebpackBaseConf, {
                         loader: 'file-loader',
                         options: {
                             name: 'font/[name].[ext]',
-                            outputPath: config.dev.assetsPath + 'font/'
+                            outputPath: utils.dev.assetsPath + 'font/'
                         }
                     }
                 ]
@@ -92,20 +90,20 @@ module.exports = utils.merge(WebpackBaseConf, {
     },
     plugins: [
         new utils.clean({
-            root: path.join(__dirname, '..', config.dev.assetsBuild)
+            root: utils.path.join(__dirname, '..', utils.dev.assetsBuild)
         }),
         new Webpack.NamedModulesPlugin(),
         new Webpack.HotModuleReplacementPlugin({
             multiple: true
         }),
         new utils.render({
-            template: path.join(__dirname, '..', 'index.html'),
+            template: utils.path.join(__dirname, '..', 'index.html'),
             filename: "index.html",
-            publicPath: config.dev.publicPath,
+            publicPath: utils.dev.publicPath,
             favicon: utils.favicon
         }),
         new utils.miniCss({
-            filename: config.build.assetsPath + 'css/[name].css',
+            filename: utils.build.assetsPath + 'css/[name].css',
             chunkFilename: '[id].css'
         }),
     ]

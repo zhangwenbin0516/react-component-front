@@ -84,3 +84,31 @@ input{ -webkit-appearance:none;/*去除input的默认样式*/ }
     overflow-y: auto;
   }
 }
+@mixin flex($val: '') {
+  display: flex;
+  display: -webkit-flex;
+  @if ($val == 'c') {
+    justify-content: center;
+    align-items: center;
+  } @else if($val == 'l') {
+    justify-content: flex-start;
+    align-content: center;
+  } @else if($val == 'r') {
+    justify-content: flex-end;
+    align-items: center;
+  } @else if($val == 't') {
+    justify-content: center;
+    align-items: flex-start;
+  } @else if($val == 'b') {
+    justify-content: center;
+    align-items: flex-end;
+  } @else {
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-flow: row wrap;
+  }
+}
+@mixin height($val: auto) {
+  height: $val;
+  line-height: $val;
+}
