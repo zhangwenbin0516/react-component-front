@@ -9,11 +9,11 @@ class RouterView extends React.Component{
             exact: true,
             component: require('page/home').default
         },
-        {
+        /*{
             path: '/home',
             name: '子首页',
             component: require('page/home/home').default
-        }
+        }*/
     ]
     render() {
         return(
