@@ -1,9 +1,12 @@
 import {createStore} from "redux";
-import Msgsnd from './reducers'
+import Reducers from './reducers'
 
-console.log()
 const TestData = (state = {}, action) => {
-    Msgsnd[action.type]();
+    try {
+        return Reducers[action.type]()
+    } catch (e) {
+        return state
+    }
 }
 
 let store = createStore(TestData)

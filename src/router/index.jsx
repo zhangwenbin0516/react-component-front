@@ -11,7 +11,7 @@ class RouterView extends React.Component{
     }
     static Routes = [
         {
-            path: '/Index',
+            path: '/page',
             name: '首页',
             exact: true,
             icon: 'home',
@@ -53,7 +53,7 @@ class RouterView extends React.Component{
             component: require('page/exchange/').default
         },
         {
-            path: '/help',
+            path: '/help/',
             name: '我的帮助',
             icon: 'help',
             exact: false,
@@ -63,7 +63,7 @@ class RouterView extends React.Component{
     render() {
         return(
             <article className={'pages-section'}>
-                <Router basename="/">
+                <Router basename={'/page'}>
                     <aside className="pages-left">
                         <nav>
                             <ul className={'menu'}>

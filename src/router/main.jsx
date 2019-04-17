@@ -3,7 +3,7 @@
 * 主要用作页面重绘
 * */
 import React, {Component} from 'react'
-import {HashRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import {HashRouter as Router ,Route, Switch, } from "react-router-dom";
 
 class MainView extends Component {
     constructor(props) {
@@ -11,11 +11,25 @@ class MainView extends Component {
     }
     static Routes = [
         {
-            path: '/',
+            path: '/page',
             exact: true,
             icon: '',
             name: '中博教育',
             component: require('page/').default
+        },
+        {
+            path: '/login',
+            exact: true,
+            icon: '',
+            name: '中博教育——登录',
+            component: require('page/register/login').default
+        },
+        {
+            path: '/sign',
+            exact: true,
+            icon: '',
+            name: '中博教育——注册',
+            component: require('page/register/sign').default
         }
     ]
     componentDidMount() {
@@ -25,7 +39,7 @@ class MainView extends Component {
     render() {
         return(
             <div className="pages">
-                <Router basename='/'>
+                <Router basename={'/'}>
                     <Switch>
                         {
                             MainView.Routes.map(({path, exact, component}, index) => {

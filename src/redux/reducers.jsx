@@ -1,23 +1,9 @@
-import {combineReducers} from "redux";
-
-class Msgsnd {
+class Person {
     constructor() {
-
-    }
-    get() {
-
-    }
-    add() {
-
-    }
-    delete() {
-
-    }
-    update() {
-
+        console.log(this)
     }
 }
 
-let CreateMsg = new Msgsnd();
+let setData = new Person();
 
-export default combineReducers(CreateMsg)
+export default setData;
