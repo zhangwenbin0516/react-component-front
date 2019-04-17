@@ -14,6 +14,7 @@ module.exports = {
             'assets': utils.path.resolve(__dirname, '..', 'src/assets'),
             'page': utils.path.resolve(__dirname, '..', 'src/components'),
             'themes': utils.path.resolve(__dirname, '..', 'src/themes'),
+            'router': utils.path.resolve(__dirname, '..', 'src/router'),
             'ui': utils.path.resolve(__dirname, '..', 'src/UI')
         }
     },

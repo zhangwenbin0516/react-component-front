@@ -1,6 +1,18 @@
 import {createStore} from "redux";
-import Reducers from './reducers';
+import Msgsnd from './reducers'
 
-let store = createStore(Reducers);
+console.log(Msgsnd)
+const TestData = (state = {}, action) => {
+    switch (action.type) {
+        case 'INCREMENT':   //增加数据
+            one('www');
+        case 'DECREMENT':   //删除数据
+            two('llll');
+        default:
+            return state;
+    }
+}
 
-export default store;
+let store = createStore(TestData)
+
+export default store

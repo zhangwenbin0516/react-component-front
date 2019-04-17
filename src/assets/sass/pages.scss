@@ -5,13 +5,14 @@
   position: relative;
   &-header {
     height: 56px;
-    @include absolute(0, 0);
+    @include absolute(0, 0, 0);
     background: $white;
     z-index: 1;
+    @include flex(l);
   }
   &-section {
     background: $fc3a6f;
-    @include absolute(0, 56px);
+    @include absolute(0, 56px, 0, 0);
   }
   &-left {
     width: 140px;
@@ -57,7 +58,7 @@
         a {
           padding-left: 60px;
           @include height(40px);
-          @include flex('l');
+          @include flex(l);
           font-size: 14px;
           color: $white;
         }
@@ -68,7 +69,7 @@
     }
   }
   &-content {
-    @include overflow('y');
+    @include overflow(y);
     @include absolute(150px, 10px, 10px, 10px, 5);
     background: $white;
   }

@@ -3,16 +3,20 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import {Provider} from 'react-redux'
 
-import Pages from 'src/router/main'
 import store from 'src/redux/'
+
+import Pages from 'src/router/main'
 import 'assets/sass/pages.scss'
 
 
 class App extends React.Component{
+    constructor(props) {
+        super(props);
+    }
     render() {
         return(
             <Provider store={store}>
-                <Pages/>
+                <Pages store={store} />
             </Provider>
         )
     }

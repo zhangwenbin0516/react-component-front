@@ -1,16 +1,23 @@
-import {combineReducers } from "redux";
-import initialState from './state'
+import {combineReducers} from "redux";
 
-const lists = (state = initialState, action) => {
-    switch (action.type) {
-        case 1:
-            return 1;
-        default:
-            console.log(action)
-            return state
+class Msgsnd {
+    constructor() {
+
+    }
+    get() {
+
+    }
+    add() {
+
+    }
+    delete() {
+
+    }
+    update() {
+
     }
 }
 
-export default combineReducers({
-    lists
-})
+let CreateMsg = new Msgsnd();
+
+export default combineReducers(CreateMsg)

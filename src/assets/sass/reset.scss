@@ -34,10 +34,6 @@ button{
   border:none;
 }
 body{
-  height:100%;
-  overflow:hidden;
-  overflow-y: auto;
-  background:#ecedf1;
   font-size: 13px;
   font-family: "Microsoft YaHei,tahoma,arial,Hiragino Sans GB,\\5b8b\4f53,sans-serif";
   color:#333;
@@ -63,7 +59,7 @@ body{
 .fr{ float: right;}
 a{ -webkit-tap-highlight-color:transparent;/*去除a标签的背景阴影*/ }
 input{ -webkit-appearance:none;/*去除input的默认样式*/ }
-@mixin absolute($l: 0, $t: 0, $r: 0, $b: 0, $z: 1) {
+@mixin absolute($l: auto, $t: auto, $r: auto, $b: auto, $z: 1) {
   position: absolute;
   left: $l;
   top: $t;
@@ -72,34 +68,34 @@ input{ -webkit-appearance:none;/*去除input的默认样式*/ }
   z-index: $z;
 }
 #root {
-  @include absolute();
+  @include absolute(0,0,0,0);
   overflow: hidden;
 }
 @mixin overflow($val: auto) {
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
-  @if ($val == 'x') {
+  @if ($val == x) {
     overflow-x: auto;
-  } @else if($val == 'y') {
+  } @else if($val == y) {
     overflow-y: auto;
   }
 }
 @mixin flex($val: '') {
   display: flex;
   display: -webkit-flex;
-  @if ($val == 'c') {
+  @if ($val == c) {
     justify-content: center;
     align-items: center;
-  } @else if($val == 'l') {
+  } @else if($val == l) {
     justify-content: flex-start;
-    align-content: center;
-  } @else if($val == 'r') {
+    align-items: center;
+  } @else if($val == r) {
     justify-content: flex-end;
     align-items: center;
-  } @else if($val == 't') {
+  } @else if($val == t) {
     justify-content: center;
     align-items: flex-start;
-  } @else if($val == 'b') {
+  } @else if($val == b) {
     justify-content: center;
     align-items: flex-end;
   } @else {

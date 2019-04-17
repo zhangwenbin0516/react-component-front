@@ -1,0 +1,10 @@
+@import "../themes";
+.header {
+  @include flex(l);
+  &-left {
+    height: 35px;
+    img {
+      height: 35px;
+    }
+  }
+}

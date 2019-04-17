@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-    favicon: path.resolve(__dirname, '..', 'src/assets/images/icon-evnling.png'),
+    favicon: path.resolve(__dirname, '..', 'src/assets/images/facicon.png'),
     path: require('path'),
     merge: require('webpack-merge'),
     clean: require('clean-webpack-plugin'),
