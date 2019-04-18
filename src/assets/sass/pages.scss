@@ -5,9 +5,8 @@
   position: relative;
   &-header {
     height: 56px;
-    @include absolute(0, 0, 0);
+    @include absolute(0, 0, 0, auto, 50);
     background: $white;
-    z-index: 1;
     @include flex(l);
   }
   &-section {
@@ -52,15 +51,15 @@
         &.help {
           @include absolute(0, auto, 0, 0, 5);
         }
+        &.active {
+          background-color: $fc3a6f;
+        }
         a {
           padding-left: 60px;
           @include height(40px);
           @include flex(l);
           font-size: 14px;
           color: $white;
-          &.active {
-            background-color: $fc3a6f;
-          }
         }
         &.home {
           background-position: -780px -2285px;

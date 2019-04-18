@@ -9,16 +9,19 @@ import {BrowserRouter as Router, Route, Link, Switch, withRouter} from "react-ro
 class ComponentRouter extends React.Component{
     constructor(props) {
         super(props);
-        let self = this, location = null;
+        this.state = {
+            RouterIndex: 0
+        }
+        let self = this;
         let Index = ComponentRouter.Routes.some((item, index) => {
             let path = self.props.location.pathname.match(item.path);
             if (path) {
-                location = item;
                 return true;
             }
-        })
+        });
         if (!Index) {
             this.props.history.push('/page/');
+            this.props.history.go();
         }
     }
 
@@ -74,7 +77,25 @@ class ComponentRouter extends React.Component{
         }
     ]
 
+    componentWillMount() {
+        let self = this;
+        this.props.history.listen(location => {
+            ComponentRouter.Routes.forEach((item, index) => {
+                let path = self.props.location.pathname.match(item.path);
+                if (path) {
+                    self.setState({
+                        RouterIndex: index
+                    });
+                }
+            })
+        })
+    }
 
+    getLink(val) {
+        this.setState({
+            RouterIndex: val
+        });
+    }
 
     render() {
         return(
@@ -84,8 +105,8 @@ class ComponentRouter extends React.Component{
                         <nav>
                             <ul className={'menu'}>
                                 {
-                                    ComponentRouter.Routes.map(({path, name, icon, exact}, index) => {
-                                        return <li className={`${icon} ${exact ? 'active' : ''}`} key={index}>
+                                    ComponentRouter.Routes.map(({path, name, icon}, index) => {
+                                        return <li onClick={() => {this.getLink(index)}} className={`${icon} ${this.state.RouterIndex == index ? 'active' : ''}`} key={index}>
                                             <Link to={`${this.props.match.path + path}`}>{name}</Link>
                                         </li>
                                     })

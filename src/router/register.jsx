@@ -17,6 +17,7 @@ class RegisterRouter extends Component {
         })
         if (!Index) {
             this.props.history.push('/register/login');
+            this.props.history.go();
         }
     }
     static Routes = [

@@ -3,8 +3,113 @@
   @include flex(l);
   &-left {
     height: 35px;
+    cursor: pointer;
     img {
       height: 35px;
+    }
+  }
+  &-right {
+    @include flex(r);
+    @include absolute(auto, 0, 0);
+    height: 56px;
+    &-list {
+      padding: 0 35px;
+      @include height(28px);
+      text-align: center;
+      cursor: pointer;
+      color: $g89949C;
+      font-size: 14px;
+      position: relative;
+      &::after {
+        content: '';
+        @include absolute(auto, 50%, 0);
+        width: 1px;
+        margin-top: -9px;
+        height: 18px;
+        background: $g89949C;
+      }
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        padding-right: 15px;
+        &::after {
+          display: none;
+        }
+      }
+
+      &.player {
+        width: 100px;
+        background: center no-repeat;
+        background-size: auto 100%;
+        padding-left: 50px;
+        color: $white;
+      }
+      &.icons {
+        span {
+          display: inline-block;
+          padding-right: 10px;
+          width: 16px;
+          height: 16px;
+          background: url("../images/header-001.png") no-repeat;
+        }
+      }
+      &.download {
+        span {
+          background-position: 0 0px;
+        }
+        &:hover {
+          color: $fc3a6f;
+          span {
+            background: url("../images/header-002.png") no-repeat;
+            background-position: 0 0px;
+          }
+        }
+      }
+      &.users {
+        span {
+          background-position: 0 -35px;
+          &:hover {
+            background: url("../images/header-002.png") no-repeat;
+            background-position: 0 -35px;
+          }
+        }
+      }
+    }
+    &-download {
+      @include absolute(auto, 42px, -10px, auto, 5);
+      padding: 10px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      background: $white;
+      box-shadow: 0 0 8px $e2e2e2;
+      &-icon {
+        @include flex(l);
+        &>img {
+          width: 120px;
+          margin: 10px;
+        }
+        & > .row {
+          @include flex();
+          padding: 0 10px;
+          justify-content: center;
+          & > a {
+            white-space: nowrap;
+            @include height(30px);
+            width: 120px;
+            color: $white;
+            background: $b3e4e63;
+            border-radius: 15px;
+            margin-top: 5px;
+          }
+        }
+      }
+      & > p {
+        white-space: nowrap;
+        color: $b888;
+        font-size: 12px;
+        text-align: left;
+      }
     }
   }
 }

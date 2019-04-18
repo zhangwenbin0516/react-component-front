@@ -5,13 +5,16 @@ import ComponentRouter from 'router/component'
 class Pages extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this,'ss')
+    }
+
+    componentWillMount() {
+
     }
 
     render() {
         return (
             <div className={'pages-master'}>
-                <Header />
+                <Header history={this.props.history} />
                 <ComponentRouter />
             </div>
         )

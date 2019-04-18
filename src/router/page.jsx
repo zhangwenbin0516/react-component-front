@@ -18,6 +18,7 @@ class PageRouter extends Component {
         });
         if (!Index) {
             this.props.history.push(this.props.match.path + 'page');
+            this.props.history.go();
         }
     }
     static Routes = [
