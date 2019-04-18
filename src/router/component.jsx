@@ -3,15 +3,28 @@
 * 主要用作内容页面控制
 * */
 import React from 'react'
-import {HashRouter as Router, Route, Link, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, Switch, withRouter} from "react-router-dom";
 
-class RouterView extends React.Component{
+
+class ComponentRouter extends React.Component{
     constructor(props) {
-        super(props)
+        super(props);
+        let self = this, location = null;
+        let Index = ComponentRouter.Routes.some((item, index) => {
+            let path = self.props.location.pathname.match(item.path);
+            if (path) {
+                location = item;
+                return true;
+            }
+        })
+        if (!Index) {
+            this.props.history.push('/page/');
+        }
     }
+
     static Routes = [
         {
-            path: '/page',
+            path: '/',
             name: '首页',
             exact: true,
             icon: 'home',
@@ -53,24 +66,27 @@ class RouterView extends React.Component{
             component: require('page/exchange/').default
         },
         {
-            path: '/help/',
+            path: '/help',
             name: '我的帮助',
             icon: 'help',
             exact: false,
             component: require('page/help/').default
         }
     ]
+
+
+
     render() {
         return(
             <article className={'pages-section'}>
-                <Router basename={'/page'}>
+                <Router>
                     <aside className="pages-left">
                         <nav>
                             <ul className={'menu'}>
                                 {
-                                    RouterView.Routes.map(({path, name, icon, exact}, index) => {
+                                    ComponentRouter.Routes.map(({path, name, icon, exact}, index) => {
                                         return <li className={`${icon} ${exact ? 'active' : ''}`} key={index}>
-                                            <Link to={path}>{name}</Link>
+                                            <Link to={`${this.props.match.path + path}`}>{name}</Link>
                                         </li>
                                     })
                                 }
@@ -80,8 +96,8 @@ class RouterView extends React.Component{
                     <section className={'pages-content'}>
                         <Switch>
                             {
-                                RouterView.Routes.map(({path, component, exact}, index) => {
-                                    return  <Route key={index} path={path} component={component} exact={exact} />
+                                ComponentRouter.Routes.map(({path, exact, component}, index) => {
+                                    return <Route key={index} path={`${this.props.match.path + path}`} exact={exact} component={component} />
                                 })
                             }
                         </Switch>
@@ -92,4 +108,4 @@ class RouterView extends React.Component{
     }
 }
 
-export default RouterView
+export default withRouter(ComponentRouter)

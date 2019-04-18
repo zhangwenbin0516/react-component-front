@@ -3,7 +3,7 @@ import React from 'react'
 class NotePage extends React.Component{
     render() {
         return (
-            'wwwww'
+            'www1222ww'
         )
     }
 }

@@ -14,6 +14,7 @@ module.exports = utils.merge(WebpackBaseConf, {
         port: '3500',
         historyApiFallback: true,
         progress: true,
+        open: true,
         proxy: {
             '/api/': {
                 target: 'https://apiDemo.zbgedu.com',

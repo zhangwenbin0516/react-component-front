@@ -5,7 +5,7 @@ import {Provider} from 'react-redux'
 
 import store from 'src/redux/'
 
-import Pages from 'src/router/main'
+import Pages from 'src/router/root'
 import 'assets/sass/pages.scss'
 
 

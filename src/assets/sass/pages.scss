@@ -49,9 +49,6 @@
         &.help::before {
           background-position: -78px -37px;
         }
-        &.active {
-          background-color: $fc3a6f;
-        }
         &.help {
           @include absolute(0, auto, 0, 0, 5);
         }
@@ -61,6 +58,9 @@
           @include flex(l);
           font-size: 14px;
           color: $white;
+          &.active {
+            background-color: $fc3a6f;
+          }
         }
         &.home {
           background-position: -780px -2285px;

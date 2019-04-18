@@ -1,18 +1,17 @@
 import React from 'react';
 import Header from 'ui/header'
-import ComponentRouter from 'router/component'
+import RegisterRouter from 'router/register'
 
 class Pages extends React.Component {
-    constructor(props) {
-        super(props);
-        console.log(this,'ss')
+    constructor() {
+        super();
     }
 
     render() {
         return (
             <div className={'pages-master'}>
                 <Header />
-                <ComponentRouter />
+                <RegisterRouter />
             </div>
         )
     }
