@@ -55,6 +55,7 @@
         }
       }
       &.download {
+        @include height(56px);
         span {
           background-position: 0 0px;
         }
@@ -64,9 +65,13 @@
             background: url("../images/header-002.png") no-repeat;
             background-position: 0 0px;
           }
+          & > div {
+            display: block;
+          }
         }
       }
       &.users {
+        @include flex(l);
         span {
           background-position: 0 -35px;
           &:hover {
@@ -76,13 +81,59 @@
         }
       }
     }
+    &-user {
+      @include flex(l);
+      & > img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+    }
+    &-userInfo {
+      border-radius: 6px;
+      border: 1px solid $e2e2e2;
+      @include absolute(auto, 36px, 10px);
+      background: $white;
+      &::before {
+        border-bottom: 8px solid $e2e2e2;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        content: '';
+        @include absolute(50%, -8px);
+        margin-left: -5px;
+      }
+      &::after {
+        border-bottom: 8px solid $white;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        content: '';
+        @include absolute(50%, -7px);
+        margin-left: -5px;
+      }
+      .list {
+        width: 125px;
+        @include flex(c);
+        height: 40px;
+        cursor: pointer;
+        border-bottom: 1px solid $e2e2e2;
+        & > a {
+          color: $fc3a6f;
+        }
+        &.exit {
+          color: $F5A623;
+          border: none;
+        }
+      }
+    }
     &-download {
-      @include absolute(auto, 42px, -10px, auto, 5);
+      @include absolute(auto, 56px, -10px, auto, 5);
       padding: 10px;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
       background: $white;
       box-shadow: 0 0 8px $e2e2e2;
+      display: none;
       &-icon {
         @include flex(l);
         &>img {
@@ -101,6 +152,10 @@
             background: $b3e4e63;
             border-radius: 15px;
             margin-top: 5px;
+          }
+          & > p {
+            @include height(24px);
+            color: $b3e4e63;
           }
         }
       }

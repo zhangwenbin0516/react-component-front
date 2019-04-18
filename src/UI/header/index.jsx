@@ -1,11 +1,19 @@
 import React from 'react'
 import 'themes/header/header.scss';
 
+let header = {};
+
 class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            right: 0
+            right: 0,
+            download: false,
+            userInfo: {
+                img: require('assets/images/user-img.jpg'),
+                name: '小博',
+                infos: false
+            }
         }
     }
 
@@ -16,12 +24,30 @@ class Header extends React.Component {
         let ele = document.querySelector('.users').clientWidth;
         this.setState({
             right: -(ele - 10) + 'px'
-        })
+        });
     }
 
-    getHost(self) {
+    getHost() {
         this.props.history.push('/page/');
         this.props.history.go();
+    }
+
+    getUserInfo(self, e) {
+        let ele = e.target;
+        self.state.userInfo.infos = true;
+        self.setState({
+            userInfo: self.state.userInfo
+        });
+        ele.onmouseleave = function() {
+            document.body.onclick = function() {
+                self.state.userInfo.infos = false;
+                self.setState({
+                    userInfo: self.state.userInfo
+                });
+                ele.onmouseleave = null;
+                document.body.onclick = null;
+            }
+        }
     }
 
     render() {
@@ -36,7 +62,7 @@ class Header extends React.Component {
                     </div>
                     <div className={'header-right-list icons download'}>
                         <span></span>APP下载
-                        <div className={'header-right-download'} style={{right: this.state.right}}>
+                        <div className={'header-right-download'} style={{right: `${this.state.right}`}}>
                             <div className={'header-right-download-icon'}>
                                 <img src={require('assets/images/download-device.png')} />
                                 <div className={'row'}>
@@ -55,6 +81,14 @@ class Header extends React.Component {
                     </div>
                     <div className={'header-right-list icons users'}>
                         <span></span>
+                        <div className={'header-right-user'} onClick={() => this.getUserInfo(this, event)}>
+                            <img src={this.state.userInfo.img} />
+                            {this.state.userInfo.name}
+                        </div>
+                        <div className={'header-right-userInfo'} style={{display: `${this.state.userInfo.infos ? 'block' : 'none'}`}}>
+                            <div className={'list'}><a href={'https://www.zbgedu.com/index/Usercenter/index.html'} target={'_blank'}>个人中心</a></div>
+                            <div className={'list exit'}>退出</div>
+                        </div>
                     </div>
                 </div>
             </header>
