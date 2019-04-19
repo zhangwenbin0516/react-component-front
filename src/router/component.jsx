@@ -13,15 +13,23 @@ class ComponentRouter extends React.Component{
             RouterIndex: 0
         }
         let self = this;
-        let Index = ComponentRouter.Routes.some((item, index) => {
+        let Index = null;
+        ComponentRouter.Routes.forEach((item, index) => {
             let path = self.props.location.pathname.match(item.path);
             if (path) {
-                return true;
+                Index = {
+                    path: item.path,
+                    value: index
+                };
             }
         });
         if (!Index) {
             this.props.history.push('/page/');
             this.props.history.go();
+        } else {
+            this.state = {
+                RouterIndex: Index.value
+            }
         }
     }
 
@@ -77,18 +85,8 @@ class ComponentRouter extends React.Component{
         }
     ]
 
-    componentWillMount() {
-        let self = this;
-        this.props.history.listen(location => {
-            ComponentRouter.Routes.forEach((item, index) => {
-                let path = self.props.location.pathname.match(item.path);
-                if (path) {
-                    self.setState({
-                        RouterIndex: index
-                    });
-                }
-            })
-        })
+    componentDidMount() {
+
     }
 
     getLink(val) {

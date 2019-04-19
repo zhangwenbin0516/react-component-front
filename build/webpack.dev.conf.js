@@ -17,16 +17,16 @@ module.exports = utils.merge(WebpackBaseConf, {
         open: true,
         proxy: {
             '/api/': {
-                target: 'https://apiDemo.zbgedu.com',
+                target: 'https://api.zbgedu.com',
                 changeOrigin: true,
                 secure: false
             },
-            '/video/': {
-                target: 'https://exvideo.zbgedu.com',
+            '/apiDemo/': {
+                target: 'https://apiDemo.zbgedu.com',
                 changeOrigin: true,
                 secure: false,
                 pathRewrite: {
-                    '^/video/': '/'
+                    '^/apiDemo/': '/api/'
                 }
             }
         }
