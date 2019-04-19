@@ -16,6 +16,7 @@ class PageRouter extends Component {
                 return true;
             }
         });
+
         if (!Index) {
             this.props.history.push(this.props.match.path + 'page');
             this.props.history.go();

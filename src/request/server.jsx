@@ -3,6 +3,7 @@ require('es6-promise').polyfill();
 require('isomorphic-fetch');
 import API from './api'
 
+
 class CreateFetch {
     constructor() {
         this.location = window.location.hostname;
@@ -13,6 +14,7 @@ class CreateFetch {
         }
     }
     async get(url, req) {
+        url = API[url];
         this.lists = {
             method: 'GET',
             cache: 'no-cache',
@@ -34,6 +36,7 @@ class CreateFetch {
         return await res.json()
     }
     async post(url, req) {
+        url = API[url];
         this.lists = {
             method: 'POST',
             cache: 'no-cache',
