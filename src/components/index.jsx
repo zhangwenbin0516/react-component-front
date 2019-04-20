@@ -13,7 +13,10 @@ class Pages extends React.Component {
 
     componentWillMount() {
         this.getUserData();
-        storage.updateData()
+        storage.setData('list', 12563);
+        storage.updateData('list', 'ss', 'ee');
+        let dd = storage.getData('list');
+        console.log(dd)
     }
 
     getUserData() {
