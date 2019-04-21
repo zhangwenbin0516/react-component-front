@@ -17,17 +17,9 @@ module.exports = utils.merge(WebpackBaseConf, {
         open: true,
         proxy: {
             '/api/': {
-                target: 'https://api.zbgedu.com',
-                changeOrigin: true,
-                secure: false
-            },
-            '/apiDemo/': {
                 target: 'https://apiDemo.zbgedu.com',
-                changeOrigin: true,
-                secure: false,
-                pathRewrite: {
-                    '^/apiDemo/': '/api/'
-                }
+                secure: true,
+                changeOrigin: true
             }
         }
     },

@@ -1,7 +1,5 @@
 import React from 'react'
-import 'themes/header/header.scss';
-
-let header = {};
+import 'themes/header/header.scss'
 
 class Header extends React.Component {
     constructor(props) {
@@ -9,16 +7,23 @@ class Header extends React.Component {
         this.state = {
             right: 0,
             download: false,
-            userInfo: {
-                img: require('assets/images/user-img.jpg'),
-                name: '小博',
-                infos: false
-            }
         }
+        if (!this.props.userInfo) {
+            this.props.userInfo.img = require('assets/images/user-img.jpg')
+            this.props.userInfo.name = '小博'
+        } else {
+            this.props.userInfo = {}
+        }
+        this.props.userInfo.infos = false
+        this.ExitLogin = this.ExitLogin.bind(this)
     }
 
     componentWillMount() {
-
+        const userInfo = storage.getData('userInfo')
+        if (userInfo) {
+            this.props.userInfo.img = baseHost + userInfo.avatar;
+            this.props.userInfo.name = userInfo.nickName;
+        }
     }
 
     componentDidMount() {
@@ -41,14 +46,24 @@ class Header extends React.Component {
         });
         ele.onmouseleave = function() {
             document.body.onclick = function() {
-                self.state.userInfo.infos = false;
-                self.setState({
-                    userInfo: self.state.userInfo
-                });
+                this.props.userInfo.infos = false;
                 ele.onmouseleave = null;
                 document.body.onclick = null;
             }
         }
+    }
+
+    ExitLogin() {
+        let self = this;
+        fetch.get('loginOut').then((res) => {
+            storage.removeData('userInfo')
+            this.props.userInfo.img = require('assets/images/user-img.jpg');
+            this.props.userInfo.name = '小博';
+            self.setState({
+                userInfo: self.state.userInfo
+            })
+            self.props.onUserData()
+        })
     }
 
     render() {
@@ -83,12 +98,12 @@ class Header extends React.Component {
                     <div className={'header-right-list icons users'}>
                         <span></span>
                         <div className={'header-right-user'} onClick={() => this.getUserInfo(this, event)}>
-                            <img src={this.state.userInfo.img} />
-                            {this.state.userInfo.name}
+                            <img src={this.props.userInfo.img} />
+                            {this.props.userInfo.name}
                         </div>
-                        <div className={'header-right-userInfo'} style={{display: `${this.state.userInfo.infos ? 'block' : 'none'}`}}>
+                        <div className={'header-right-userInfo'} style={{display: `${this.props.userInfo.infos ? 'block' : 'none'}`}}>
                             <div className={'list'}><a href={'https://www.zbgedu.com/index/Usercenter/index.html'} target={'_blank'}>个人中心</a></div>
-                            <div className={'list exit'}>退出</div>
+                            <div className={'list exit'} onClick={this.ExitLogin}>退出</div>
                         </div>
                     </div>
                 </div>

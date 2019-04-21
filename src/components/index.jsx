@@ -9,29 +9,30 @@ class Pages extends React.Component {
         this.state = {
             LoginComponent: ''
         }
+        this.getUserData = this.getUserData.bind(this)
     }
 
     componentWillMount() {
         this.getUserData();
-        storage.setData('list', 12563);
-        storage.updateData('list', 'ss', 'ee');
-        let dd = storage.getData('list');
-        console.log(dd)
     }
 
     getUserData() {
-        this.setState({
-            isLogin: storage.getData('userInfo')
-        })
-        if (this.state.isLogin) {
-            this.state.LoginComponent = <Login isLogin={this.getUserData}/>
+        const userInfo = storage.getData('userInfo')
+        if (!userInfo) {
+            this.state.LoginComponent = <Login history={this.props.history} getUserData={this.getUserData} />
+        } else {
+            this.state.LoginComponent = ''
         }
+        this.setState({
+            LoginComponent: this.state.LoginComponent,
+            userInfo: userInfo
+        })
     }
 
     render() {
         return (
             <div className={'pages-master'}>
-                <Header history={this.props.history} isLogin={this.getUserData} />
+                <Header history={this.props.history} onUserData={this.getUserData} userInfo={this.state.userInfo} />
                 { this.state.LoginComponent }
                 <ComponentRouter />
             </div>

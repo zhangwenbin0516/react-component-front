@@ -17,6 +17,12 @@ import 'assets/sass/pages.scss'
 class App extends React.Component{
     constructor(props) {
         super(props);
+        let location = window.location.href;
+        if (location.match('www.zbgedu.com')) {
+            window.baseHost = 'https://www.zbgedu.com'
+        } else {
+            window.baseHost = 'https://elearningdemo.zbgedu.com'
+        }
     }
 
     componentWillMount() {

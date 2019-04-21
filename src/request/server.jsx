@@ -1,24 +1,20 @@
 "use strict";
 require('es6-promise').polyfill();
-require('isomorphic-fetch');
+const fetch = require('isomorphic-fetch');
 import API from './api'
 
 
 class CreateFetch {
     constructor() {
-        this.location = window.location.hostname;
-        if (this.location.match('www.zbgedu.com')) {
-            this.host = 'https://api.zbgedu.com/api/';
-        } else {
-            this.host = 'https://apiDemo.zbgedu.com/api/';
-        }
+
     }
     async get(url, req) {
-        url = API[url];
+        url = API[url].path;
         this.lists = {
             method: 'GET',
             cache: 'no-cache',
             mode: 'cors',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -32,11 +28,11 @@ class CreateFetch {
             }
             this.body = '?' + list.join('&');
         }
-        let res = await fetch(this.host + url + this.body, this.lists);
+        let res = await fetch(url + this.body, this.lists);
         return await res.json()
     }
     async post(url, req) {
-        url = API[url];
+        url = API[url].path;
         this.lists = {
             method: 'POST',
             cache: 'no-cache',
@@ -46,7 +42,7 @@ class CreateFetch {
                 'Content-Type': 'application/json'
             }
         }
-        let res = await fetch(this.host + url, this.lists);
+        let res = await fetch(url, this.lists);
         return await res.json()
     }
 }

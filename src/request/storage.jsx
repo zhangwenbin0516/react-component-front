@@ -8,7 +8,8 @@ class CreateComponent {
         this.updateTime = this.getTime + 30 * 60 * 1000;
         this.timing = this.getTime + 3 * 60 * 1000;
         let time = localStorage.getItem('timing');
-        if (this.updateTime <= this.getTime) {
+        let updateTime = localStorage.getItem('updateTime');
+        if (updateTime <= this.getTime) {
             this.clearData()
         }
         if (time) {
@@ -36,6 +37,8 @@ class CreateComponent {
         if (data) {
             let lists = JSON.parse(data);
             return lists.data
+        } else {
+            return null
         }
     }
 
@@ -45,7 +48,11 @@ class CreateComponent {
         if (body) {
             let lists = JSON.parse(body);
             lists['updateTime'] = this.getTime;
-            lists[key] = data;
+            if (lists.data instanceof Object) {
+                lists.data[key] = data
+            } else {
+                lists.data = data;
+            }
             localStorage.setItem(item, JSON.stringify(lists));
         }
     }
