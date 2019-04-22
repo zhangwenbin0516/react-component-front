@@ -25,7 +25,9 @@ class LoginComponent extends React.Component{
             "appId": "pcWeb",
             "appKey": "e877000be408a6cb0428e0f584456e03"
         }
-        fetch.get('token', lists).then((res) => {
+        fetch.get('token', {
+            data: lists
+        }).then((res) => {
             let data = res.data || {};
             self.setState({
                 token: data.token

@@ -1,11 +1,14 @@
+import { combineReducers } from "redux";
 import CacheData from './state'
 
 const getUserInfo = (state= CacheData, action) => {
 
 }
 
-const Reducers = {
-    getUserInfo: getUserInfo
+const AllReducers = {
+    getUserInfo
 }
 
-export default Reducers
+const ReadyReducers = combineReducers(AllReducers)
+
+export default ReadyReducers

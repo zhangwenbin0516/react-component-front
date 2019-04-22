@@ -23,6 +23,7 @@ class App extends React.Component{
         } else {
             window.baseHost = 'https://elearningdemo.zbgedu.com'
         }
+        let er = {a: 1, n: 3};
     }
 
     componentWillMount() {
