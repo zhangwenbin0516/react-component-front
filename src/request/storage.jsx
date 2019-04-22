@@ -10,7 +10,7 @@ class CreateComponent {
         let time = localStorage.getItem('timing');
         let updateTime = localStorage.getItem('updateTime');
         if (updateTime <= this.getTime) {
-            this.clearData()
+            this.removeData('userInfo')
         }
         if (time) {
             if (this.getTime > time) {

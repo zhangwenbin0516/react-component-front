@@ -1,14 +1,14 @@
-import {createStore} from "redux";
-import Reducers from './reducers'
+import { combineReducers, createStore } from "redux";
+import Reducers from './reducers';
+import action from './action'
 
-const TestData = (state = {}, action) => {
-    try {
-        return Reducers[action.type]()
-    } catch (e) {
-        return state
+const AllReducers = (state = null, action) => {
+    console.log(action.type, state)
+    switch (action.type) {
+
     }
 }
 
-let store = createStore(TestData)
+let store = createStore(AllReducers)
 
 export default store

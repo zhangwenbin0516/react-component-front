@@ -6,7 +6,7 @@ class LoginComponent extends React.Component{
         super(props)
         this.state = {
             form: true,
-            userInfo: {}
+            userInfo: {},
         }
         this.getForm = this.getForm.bind(this)
         this.getSubmit = this.getSubmit.bind(this)
@@ -68,7 +68,7 @@ class LoginComponent extends React.Component{
     getSubmit() {
         let Info = this.state.userInfo, self = this;
         if (!this.state.form) {
-            this.state.userInfo['token'] = this.state.token
+            this.state.userInfo['token'] = this.state.token;
         }
         for (let index in Info) {
             if (Info[index] === '') {

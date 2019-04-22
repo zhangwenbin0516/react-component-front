@@ -1,9 +1,11 @@
-class Person {
-    constructor() {
-        console.log(this)
-    }
+import CacheData from './state'
+
+const getUserInfo = (state= CacheData, action) => {
+
 }
 
-let setData = new Person();
+const Reducers = {
+    getUserInfo: getUserInfo
+}
 
-export default setData;
+export default Reducers

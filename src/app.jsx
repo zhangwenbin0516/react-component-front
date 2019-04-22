@@ -26,7 +26,8 @@ class App extends React.Component{
     }
 
     componentWillMount() {
-
+        store.dispatch({type: 'USERINFO', payload: {name: '2342'}})
+        console.log(store.getState())
     }
 
     render() {
