@@ -7,22 +7,20 @@ class Header extends React.Component {
         this.state = {
             right: 0,
             download: false,
+            userInfo: {
+                img: require('assets/images/user-img.jpg'),
+                name: '小博',
+                infos: false
+            }
         }
-        if (!this.props.userInfo) {
-            this.props.userInfo.img = require('assets/images/user-img.jpg')
-            this.props.userInfo.name = '小博'
-        } else {
-            this.props.userInfo = {}
-        }
-        this.props.userInfo.infos = false
         this.ExitLogin = this.ExitLogin.bind(this)
     }
 
     componentWillMount() {
         const userInfo = storage.getData('userInfo')
         if (userInfo) {
-            this.props.userInfo.img = baseHost + userInfo.avatar;
-            this.props.userInfo.name = userInfo.nickName;
+            this.state.userInfo.img = baseHost + userInfo.avatar;
+            this.state.userInfo.name = userInfo.nickName;
         }
     }
 
@@ -34,8 +32,8 @@ class Header extends React.Component {
     }
 
     getHost() {
-        this.props.history.push('/page/');
-        this.props.history.go();
+        this.state.history.push('/page/');
+        this.state.history.go();
     }
 
     getUserInfo(self, e) {
@@ -46,7 +44,7 @@ class Header extends React.Component {
         });
         ele.onmouseleave = function() {
             document.body.onclick = function() {
-                this.props.userInfo.infos = false;
+                this.state.userInfo.infos = false;
                 ele.onmouseleave = null;
                 document.body.onclick = null;
             }
@@ -98,10 +96,10 @@ class Header extends React.Component {
                     <div className={'header-right-list icons users'}>
                         <span></span>
                         <div className={'header-right-user'} onClick={() => this.getUserInfo(this, event)}>
-                            <img src={this.props.userInfo.img} />
-                            {this.props.userInfo.name}
+                            <img src={this.state.userInfo.img} />
+                            {this.state.userInfo.name}
                         </div>
-                        <div className={'header-right-userInfo'} style={{display: `${this.props.userInfo.infos ? 'block' : 'none'}`}}>
+                        <div className={'header-right-userInfo'} style={{display: `${this.state.userInfo.infos ? 'block' : 'none'}`}}>
                             <div className={'list'}><a href={'https://www.zbgedu.com/index/Usercenter/index.html'} target={'_blank'}>个人中心</a></div>
                             <div className={'list exit'} onClick={this.ExitLogin}>退出</div>
                         </div>
