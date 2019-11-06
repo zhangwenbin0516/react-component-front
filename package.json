@@ -14,8 +14,16 @@
   "author": "zhangwenbin <942623159@qq.com>",
   "license": "ISC",
   "dependencies": {
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.3",
+    "koa": "^2.11.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   },
   "devDependencies": {
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^0.2.4",
+    "typescript": "^3.7.2"
   },
   "engines": {
     "node": ">=6.11.5"
