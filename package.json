@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "webpack react requirejs",
   "scripts": {
-    "dev": "webpack-dev-server --progress --config build/webpack.dev.conf.js",
-    "build": "webpack --progress --config build/webpack.prod.conf.js"
+    "dev": "webpack-dev-server --progress --config bin/webpack.dev.conf.js",
+    "build": "webpack --progress --config bin/webpack.prod.conf.js",
+    "start": "nodemon --watch bin/* --exec npm run dev"
   },
   "keywords": [
     "webpack",
@@ -22,8 +23,16 @@
   },
   "devDependencies": {
     "awesome-typescript-loader": "^5.2.1",
+    "node-sass": "^4.13.0",
+    "nodemon": "^1.19.4",
+    "sass-loader": "^8.0.0",
     "source-map-loader": "^0.2.4",
-    "typescript": "^3.7.2"
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
   },
   "engines": {
     "node": ">=6.11.5"
